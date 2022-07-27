@@ -13,6 +13,9 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+/**
+ * 가장 기본적인 KafkaTemplate을 통한 Send
+ */
 @Slf4j
 @Component
 @RequiredArgsConstructor
