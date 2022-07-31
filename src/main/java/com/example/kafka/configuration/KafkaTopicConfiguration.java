@@ -24,7 +24,9 @@ public class KafkaTopicConfiguration {
      */
     @Bean
     public NewTopic topic1() {
-        return TopicBuilder.name("topic1").build();
+        return TopicBuilder
+                .name("topic1")
+                .build();
     }
 
     /**
@@ -35,6 +37,7 @@ public class KafkaTopicConfiguration {
     @Bean
     public KafkaAdmin.NewTopics topics() {
         return new KafkaAdmin.NewTopics(
+                TopicBuilder.name("topic").build(),
                 TopicBuilder.name("topic2").build(),
                 TopicBuilder.name("topic3")
                         .partitions(3)

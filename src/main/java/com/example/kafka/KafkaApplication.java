@@ -1,36 +1,26 @@
 package com.example.kafka;
 
-import com.example.kafka.producer.KafkaTemplateProducer;
-import lombok.RequiredArgsConstructor;
+import com.example.kafka.producer.ReplyingKafkaProducer;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
 import org.springframework.kafka.annotation.EnableKafka;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.stereotype.Service;
 
+@Slf4j
 @EnableKafka
 @SpringBootApplication
-@RequiredArgsConstructor
 public class KafkaApplication {
-
-    private final KafkaTemplateProducer kafkaKafkaTemplateProducer;
 
     public static void main(String[] args) {
         SpringApplication.run(KafkaApplication.class, args);
     }
 
     @Bean
-    public ApplicationRunner runner(KafkaTemplate<String, String> kafkaTemplate) {
-        System.out.println("Start");
+    public ApplicationRunner runner(ReplyingKafkaProducer replyingKafkaProducer) {
         return args -> {
-            kafkaKafkaTemplateProducer.asyncSend("topic3", "async");
-            kafkaKafkaTemplateProducer.syncSend("topic3", "sync");
-            Thread.sleep(10000);
+            replyingKafkaProducer.replyingSend();
         };
     }
 }

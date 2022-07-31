@@ -17,6 +17,7 @@ import java.util.Map;
 
 /**
  * 말 그대로 Consumer에게서 Response를 받는다.
+ * sendAndReceive 메소드를 사용한다.
  */
 @Configuration
 public class ReplyingKafkaTemplateConfiguration {
@@ -35,11 +36,12 @@ public class ReplyingKafkaTemplateConfiguration {
 
     @Bean
     public ConcurrentMessageListenerContainer<String, String> repliesContainer(ConcurrentKafkaListenerContainerFactory<String, String> containerFactory) {
-        ConcurrentMessageListenerContainer<String, String> container = containerFactory.createContainer("reply-example");
+        ConcurrentMessageListenerContainer<String, String> container = containerFactory.createContainer("topic");
         /**
          * 기타 설정들을 추가 할 수 있다.
          */
         container.setTopicCheckTimeout(40);
+        container.getContainerProperties().setGroupId("id");
         return container;
     }
 
