@@ -6,7 +6,7 @@ import org.springframework.kafka.core.KafkaProducerException;
 import org.springframework.kafka.core.KafkaSendCallback;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.util.concurrent.ListenableFuture;
 
 import java.util.concurrent.ExecutionException;
@@ -17,7 +17,7 @@ import java.util.concurrent.TimeoutException;
  * 가장 기본적인 KafkaTemplate을 통한 Send
  */
 @Slf4j
-@Component
+@Service
 @RequiredArgsConstructor
 public class KafkaTemplateProducer {
 

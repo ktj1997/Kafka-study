@@ -6,30 +6,45 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
+import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
+import org.springframework.kafka.requestreply.ReplyingKafkaTemplate;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * SpringBoot가 기본적으로 제공해주기는 한다.
+ * 말 그대로 Consumer에게서 Response를 받는다.
  */
 @Configuration
-public class KafkaTemplateConfiguration {
+public class ReplyingKafkaTemplateConfiguration {
 
     @Value("${kafka.broker.url}")
     private String BROKER_URL;
 
     @Bean
-    public KafkaTemplate<String, String> kafkaTemplate(
-            @Qualifier("producerFactory")
-                    ProducerFactory<String, String> producerFactory) {
-        return new KafkaTemplate<String, String>(producerFactory);
+    public ReplyingKafkaTemplate<String, String, String> replyingKafkaTemplate(
+            @Qualifier("replyingKafkaProducerFactory")
+                    ProducerFactory<String, String> producerFactory,
+            ConcurrentMessageListenerContainer<String, String> containerFactory
+    ) {
+        return new ReplyingKafkaTemplate<String, String, String>(producerFactory, containerFactory);
     }
 
-    @Bean(name = "producerFactory")
+    @Bean
+    public ConcurrentMessageListenerContainer<String, String> repliesContainer(ConcurrentKafkaListenerContainerFactory<String, String> containerFactory) {
+        ConcurrentMessageListenerContainer<String, String> container = containerFactory.createContainer("reply-example");
+        /**
+         * 기타 설정들을 추가 할 수 있다.
+         */
+        container.setTopicCheckTimeout(40);
+        return container;
+    }
+
+
+    @Bean(name = "replyingKafkaProducerFactory")
     public ProducerFactory<String, String> producerFactory() {
         Map<String, Object> producerProperties = new HashMap<>();
 
