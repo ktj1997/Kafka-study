@@ -25,6 +25,10 @@ public class KafkaListenerContainerConfiguration {
      * Container는 Listener의 Property 이다.
      * --> Listener를 소유한다. (꼭 Listener를 갖고있어야 한다.)
      * --> Listener는 구현해주어야 한다.
+     *
+     * KafkaMessageListenerContainer를 가지고
+     * pause(), resume()을 통해서 Listen 여부를 결정 할 수 있다.
+     * 장애가 났을 떄, 서버를 내리는 것이 아닌 특정 ListenerContainer를 내림으로써 해결이 가능하다.
      */
     @Bean
     public KafkaMessageListenerContainer<String, String> kafkaMessageListenerContainer(

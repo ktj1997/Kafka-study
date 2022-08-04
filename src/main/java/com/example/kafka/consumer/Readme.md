@@ -5,9 +5,26 @@
 
 ## Listener 타입
 
-### Message (한번에 하나 씩)
+### Message 
+- 한번에 하나의 메세지 처리
+- application.yml로도 설정이 가능하다.
+  - ```yaml
+        spring:
+            kafka:
+              consumer:
+                bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER:localhost:9092}
+            
+              listener:
+                type: single
+                ack-mode: RECORD
+    ```
 
-### Batch (배치 단위로 한번에 )
+### Batch 
+- 배치 단위로 처리한다.
+- max.poll.records 설정에 명시된 값 만큼 레코드를 처리한다.
+  - poll() 메소드로 호출한 레코드를 처리 할 수 있다.
+
+
 
 ## Ack Mode
 

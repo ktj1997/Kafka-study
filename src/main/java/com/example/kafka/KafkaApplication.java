@@ -1,12 +1,13 @@
 package com.example.kafka;
 
+import com.example.kafka.producer.KafkaTemplateProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.EnableKafka;
-import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.listener.KafkaMessageListenerContainer;
 
 @Slf4j
 @EnableKafka
@@ -18,9 +19,20 @@ public class KafkaApplication {
     }
 
     @Bean
-    public ApplicationRunner runner(KafkaTemplate<String, String> kafkaTemplate) {
+    public ApplicationRunner runner(
+            KafkaTemplateProducer producer,
+            KafkaMessageListenerContainer<String, String> kafkaListenerContainerFactory
+    ) {
         return args -> {
-            kafkaTemplate.send("example","hello");
+            producer.asyncSend("example","hello");
+            producer.asyncSend("example","bye");
+            /**
+             * Pause와 Resume을 통해서 Listen 여부를 결정한다.
+             *
+             * kafkaListenerContainerFactory.stop();
+             * kafkaListenerContainerFactory.resume();
+             */
+
         };
     }
 }
