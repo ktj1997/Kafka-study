@@ -20,12 +20,11 @@ public class KafkaApplication {
 
     @Bean
     public ApplicationRunner runner(
-            KafkaTemplateProducer producer,
-            KafkaMessageListenerContainer<String, String> kafkaListenerContainerFactory
+            KafkaTemplateProducer producer
     ) {
         return args -> {
-            producer.asyncSend("example","hello");
-            producer.asyncSend("example","bye");
+            producer.asyncSend("topicName","hello");
+            producer.asyncSend("topicName","bye");
             /**
              * Pause와 Resume을 통해서 Listen 여부를 결정한다.
              *
