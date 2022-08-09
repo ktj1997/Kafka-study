@@ -1,17 +1,18 @@
 package com.example.kafka;
 
-import com.example.kafka.producer.KafkaTemplateProducer;
+import com.example.kafka.sample.producer.KafkaTemplateProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.kafka.annotation.EnableKafka;
-import org.springframework.kafka.listener.KafkaMessageListenerContainer;
 
 @Slf4j
 @EnableKafka
 @SpringBootApplication
+@EnableJpaAuditing
 public class KafkaApplication {
 
     public static void main(String[] args) {

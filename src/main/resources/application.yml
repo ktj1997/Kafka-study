@@ -1,3 +1,10 @@
 kafka:
   broker:
     url: ${KAFKA_BROKER_URL:localhost:9092}
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${PROJECT_DATASOURCE_URL}
+    password: ${PROJECT_DATASOURCE_PASSWORD}
+    username: ${PROJECT_DATASOURCE_USERNAME}

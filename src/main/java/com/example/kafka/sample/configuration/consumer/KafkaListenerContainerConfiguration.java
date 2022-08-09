@@ -1,7 +1,8 @@
-package com.example.kafka.configuration.consumer;
+package com.example.kafka.sample.configuration.consumer;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,9 +29,10 @@ public class KafkaListenerContainerConfiguration {
      * pause(), resume()을 통해서 Listen 여부를 결정 할 수 있다.
      * 장애가 났을 떄, 서버를 내리는 것이 아닌 특정 ListenerContainer를 내림으로써 해결이 가능하다.
      */
-    @Bean
+    @Bean("exampleKafkaListenerContainerFactory")
     public ConcurrentKafkaListenerContainerFactory<String, String> concurrentKafkaListenerContainerFactory(
-            ConsumerFactory<String, String> consumerFactory
+            @Qualifier("exampleContainerFactory")
+                    ConsumerFactory<String, String> consumerFactory
 
     ) {
         ConcurrentKafkaListenerContainerFactory<String, String> containerFactory
@@ -48,7 +50,7 @@ public class KafkaListenerContainerConfiguration {
         return containerFactory;
     }
 
-    @Bean
+    @Bean("exampleContainerFactory")
     public ConsumerFactory<String, String> containerFactory() {
         Map<String, Object> properties = new LinkedHashMap<>();
 

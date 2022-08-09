@@ -1,4 +1,4 @@
-package com.example.kafka.consumer.listener;
+package com.example.kafka.sample.consumer.listener;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
