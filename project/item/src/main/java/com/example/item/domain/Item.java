@@ -1,5 +1,6 @@
 package com.example.item.domain;
 
+import javax.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,13 +15,13 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Item {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    private String name;
+  @Column private String name;
 
-    private int price;
+  @Column private int price;
 
-    private int quantity;
+  @Column private int quantity;
 }

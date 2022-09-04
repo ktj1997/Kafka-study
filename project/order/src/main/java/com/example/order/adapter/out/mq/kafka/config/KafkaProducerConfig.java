@@ -1,4 +1,4 @@
-package com.example.order.adapter.out.mq.config;
+package com.example.order.adapter.out.mq.kafka.config;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;

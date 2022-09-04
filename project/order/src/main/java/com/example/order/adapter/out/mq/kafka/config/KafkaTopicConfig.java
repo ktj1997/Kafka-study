@@ -1,9 +1,6 @@
-package com.example.item.adapter.out.mq.kafka.config;
+package com.example.order.adapter.out.mq.kafka.config;
 
-import java.lang.reflect.Modifier;
-import java.util.Arrays;
 import org.apache.kafka.clients.admin.AdminClient;
-import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,8 +10,8 @@ import org.springframework.kafka.core.KafkaAdmin;
 @Configuration
 public class KafkaTopicConfig {
 
-  @Value("$kafka.topics.item}")
-  private String TOPIC_ITEM;
+  @Value("$kafka.topics.order}")
+  private String TOPIC_ORDER;
 
   @Bean
   public AdminClient adminClient(KafkaAdmin kafkaAdmin) {
@@ -23,6 +20,6 @@ public class KafkaTopicConfig {
 
   @Bean
   public KafkaAdmin.NewTopics topics() {
-    return new KafkaAdmin.NewTopics(TopicBuilder.name(TOPIC_ITEM).build());
+    return new KafkaAdmin.NewTopics(TopicBuilder.name(TOPIC_ORDER).build());
   }
 }

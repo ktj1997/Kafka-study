@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: "item-application"
+
+server:
+  port: 8080
+kafka:
+  server: ${KAFKA_BOOTSTRAP_SERVER:localhost:9092}
+  topics:
+    order: "ex_order"
+    item: "ex_item"
+
