@@ -1,1 +1,4 @@
 rootProject.name = 'kafka'
+include 'project:order'
+include 'project:item'
+include 'example'
