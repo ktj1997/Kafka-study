@@ -1,10 +1,9 @@
 package com.example.order.adapter.out.persistence;
 
 import com.example.order.adapter.out.persistence.jpa.repository.OrderRepository;
-import com.example.order.application.port.out.OrderDataAccessor;
+import com.example.order.application.port.out.persistence.OrderDataAccessor;
 import com.example.order.domain.Order;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,4 +1,4 @@
-package com.example.order.application.port.out;
+package com.example.order.application.port.out.persistence;
 
 import com.example.order.domain.OrderHistory;
 

@@ -3,14 +3,17 @@ spring:
     name: "order-application"
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${DATASOURCE_URL:jdbc:mysql://localhost:3306/todo}
+    url: ${DATASOURCE_URL:jdbc:mysql://localhost:3306/eda}
     password: ${DATASOURCE_PASSWORD:1q2w3e4r}
     username: ${DATASOURCE_USERNAME:root}
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
 server:
   port: 8081
 kafka:
-  server: ${KAFKA_BOOTSTRAP_SERVER:localhost:9092}
-  topics:
-    order: "ex_order"
-    item: "ex_item"
-
+  broker:
+    url: ${KAFKA_BOOTSTRAP_SERVER:localhost:9092}
