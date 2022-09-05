@@ -10,7 +10,7 @@ import org.springframework.kafka.core.KafkaAdmin;
 @Configuration
 public class KafkaTopicConfig {
 
-  @Value("$kafka.topics.order}")
+  @Value("${kafka.topics.order}")
   private String TOPIC_ORDER;
 
   @Bean

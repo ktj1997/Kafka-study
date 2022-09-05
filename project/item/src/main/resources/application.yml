@@ -1,7 +1,11 @@
 spring:
   application:
     name: "item-application"
-
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DATASOURCE_URL:jdbc:mysql://localhost:3306/todo}
+    password: ${DATASOURCE_PASSWORD:1q2w3e4r}
+    username: ${DATASOURCE_USERNAME:root}
 server:
   port: 8080
 kafka:

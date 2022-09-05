@@ -1,5 +1,6 @@
 package com.example.order.adapter.in.web;
 
+import com.example.order.adapter.in.web.req.CreateOrderRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/orders")
 public class OrderController {
-    @PostMapping("")
+    @PostMapping
     public void createOrder(@RequestBody CreateOrderRequest req) {
 
     }

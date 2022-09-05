@@ -13,7 +13,7 @@ import org.springframework.kafka.core.KafkaAdmin;
 @Configuration
 public class KafkaTopicConfig {
 
-  @Value("$kafka.topics.item}")
+  @Value("${kafka.topics.item}")
   private String TOPIC_ITEM;
 
   @Bean
