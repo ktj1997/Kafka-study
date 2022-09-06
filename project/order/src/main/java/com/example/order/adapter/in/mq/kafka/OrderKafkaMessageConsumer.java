@@ -1,6 +1,7 @@
-package com.example.order.adapter.out.mq.kafka.consumer;
+package com.example.order.adapter.in.mq.kafka;
 
-import com.example.order.adapter.out.mq.kafka.config.KafkaTopicConstant;
+import com.example.order.application.port.in.OrderHistoryService;
+import com.example.order.config.mq.kafka.KafkaTopicConstant;
 import com.example.order.adapter.out.mq.kafka.record.OrderCreatedRecord;
 import com.example.order.application.port.out.persistence.OrderHistoryDataAccessor;
 import com.example.order.domain.OrderHistory;
@@ -21,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrderKafkaMessageConsumer {
 
   private final ObjectMapper objectMapper;
-  private final OrderHistoryDataAccessor orderHistoryDataAccessor;
+  private final OrderHistoryService orderHistoryService;
 
   @KafkaListener(id = "order-created-event-consumer", topics = KafkaTopicConstant.CREATE_ORDER)
   public void consumeOrderCreatedEvent(ConsumerRecord<String, String> consumerRecord) {
@@ -31,11 +32,8 @@ public class OrderKafkaMessageConsumer {
       OrderCreatedRecord orderCreatedRecord =
           objectMapper.readValue(consumerRecord.value(), OrderCreatedRecord.class);
 
-      OrderHistoryId orderHistoryId =
-          new OrderHistoryId(
-              orderCreatedRecord.getOrderId(), orderCreatedRecord.getTransactionId());
-
-      orderHistoryDataAccessor.save(new OrderHistory(orderHistoryId, OrderStatus.CREATED));
+      orderHistoryService.saveOrderHistory(
+          orderCreatedRecord.getOrderId(), orderCreatedRecord.getTransactionId());
 
     } catch (Throwable throwable) {
       log.error("Consume Kafka Record Failed");

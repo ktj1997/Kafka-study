@@ -1,16 +1,14 @@
-package com.example.order.adapter.out.mq.kafka.config;
+package com.example.order.config.mq.kafka;
 
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.NewTopic;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.KafkaAdmin;
-import org.springframework.kafka.core.KafkaAdmin.NewTopics;
 
 @Slf4j
 @Configuration

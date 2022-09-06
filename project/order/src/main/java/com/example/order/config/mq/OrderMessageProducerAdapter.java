@@ -1,6 +1,6 @@
-package com.example.order.adapter.out.mq;
+package com.example.order.config.mq;
 
-import com.example.order.adapter.out.mq.kafka.producer.OrderKafkaMessageProducer;
+import com.example.order.adapter.out.mq.kafka.OrderKafkaMessageProducer;
 import com.example.order.adapter.out.mq.kafka.record.OrderCreatedRecord;
 import com.example.order.application.port.out.mq.OrderMessageProducer;
 import lombok.RequiredArgsConstructor;

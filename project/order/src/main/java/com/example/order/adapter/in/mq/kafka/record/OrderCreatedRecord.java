@@ -1,4 +1,4 @@
-package com.example.order.adapter.out.mq.kafka.record;
+package com.example.order.adapter.in.mq.kafka.record;
 
 import com.example.order.config.mq.Message;
 import lombok.AllArgsConstructor;

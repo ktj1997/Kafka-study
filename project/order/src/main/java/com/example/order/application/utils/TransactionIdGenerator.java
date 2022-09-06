@@ -1,4 +1,4 @@
-package com.example.order.application;
+package com.example.order.application.utils;
 
 import java.util.UUID;
 

@@ -1,6 +1,6 @@
 package com.example.order.application.port.out.mq;
 
-import com.example.order.adapter.out.mq.Message;
+import com.example.order.config.mq.Message;
 
 public interface OrderMessageProducer {
 

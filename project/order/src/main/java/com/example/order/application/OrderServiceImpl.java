@@ -8,6 +8,7 @@ import com.example.order.application.port.in.info.OrderInfo;
 import com.example.order.application.port.out.mq.OrderMessageProducer;
 import com.example.order.application.port.out.persistence.OrderDataAccessor;
 import com.example.order.application.port.out.persistence.OrderHistoryDataAccessor;
+import com.example.order.application.utils.TransactionIdGenerator;
 import com.example.order.domain.Order;
 import com.example.order.domain.OrderHistory;
 import com.example.order.domain.OrderHistoryId;

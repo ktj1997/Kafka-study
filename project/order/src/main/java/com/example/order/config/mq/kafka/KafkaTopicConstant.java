@@ -1,4 +1,4 @@
-package com.example.order.adapter.out.mq.kafka.config;
+package com.example.order.config.mq.kafka;
 
 public class KafkaTopicConstant {
   public static final String CREATE_ORDER = "create_order";

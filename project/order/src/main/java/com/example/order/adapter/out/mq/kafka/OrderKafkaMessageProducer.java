@@ -1,6 +1,6 @@
-package com.example.order.adapter.out.mq.kafka.producer;
+package com.example.order.adapter.out.mq.kafka;
 
-import com.example.order.adapter.out.mq.kafka.config.KafkaTopicConstant;
+import com.example.order.config.mq.kafka.KafkaTopicConstant;
 import com.example.order.adapter.out.mq.kafka.record.OrderCreatedRecord;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
