@@ -17,3 +17,5 @@ server:
 kafka:
   broker:
     url: ${KAFKA_BOOTSTRAP_SERVER:localhost:9092}
+gateway:
+  item: ${ITEM_API_URL:localhost:8080/items}

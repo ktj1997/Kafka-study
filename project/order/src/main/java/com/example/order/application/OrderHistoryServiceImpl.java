@@ -4,9 +4,9 @@ import com.example.order.application.port.in.OrderHistoryService;
 import com.example.order.application.port.in.info.OrderHistoryInfo;
 import com.example.order.application.port.out.persistence.OrderHistoryDataAccessor;
 import com.example.order.domain.OrderHistory;
-import com.example.order.domain.OrderHistoryId;
 import com.example.order.domain.OrderStatus;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,15 +20,17 @@ public class OrderHistoryServiceImpl implements OrderHistoryService {
 
   @Override
   public List<OrderHistoryInfo> findAllHistories(Long orderId, String transactionId) {
-    return null;
+    return orderHistoryDataAccessor.findAll(orderId, transactionId).stream()
+        .map(history -> new OrderHistoryInfo(history.getOrderStatus(), history.getCreatedAt()))
+        .collect(Collectors.toList());
   }
 
   @Override
   public OrderHistoryInfo saveOrderHistory(Long orderId, String transactionId) {
-    OrderHistoryId orderHistoryId = new OrderHistoryId(orderId, transactionId);
     OrderHistory orderHistory =
-        orderHistoryDataAccessor.save(new OrderHistory(orderHistoryId, OrderStatus.CREATED));
+        orderHistoryDataAccessor.save(
+            new OrderHistory(null, orderId, transactionId, OrderStatus.CREATED));
 
-    return new OrderHistoryInfo(orderHistory.getStatus(), orderHistory.getCreatedAt());
+    return new OrderHistoryInfo(orderHistory.getOrderStatus(), orderHistory.createdAt);
   }
 }

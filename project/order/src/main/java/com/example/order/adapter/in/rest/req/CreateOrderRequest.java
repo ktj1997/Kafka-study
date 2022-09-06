@@ -1,4 +1,4 @@
-package com.example.order.adapter.in.web.req;
+package com.example.order.adapter.in.rest.req;
 
 import com.example.order.application.port.in.command.ItemCommand;
 import com.example.order.application.port.in.command.OrderCommand;

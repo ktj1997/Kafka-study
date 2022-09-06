@@ -6,6 +6,9 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -18,10 +21,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderHistory extends BaseTimeEntity {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-  @EmbeddedId private OrderHistoryId id;
+  @Column(name = "order_id", nullable = false)
+  private Long orderId;
 
-  @Column
+  @Column(name = "transaction_id", nullable = false)
+  private String transactionId;
+
   @Enumerated(EnumType.STRING)
-  private OrderStatus status;
+  @Column(name = "status", nullable = false)
+  private OrderStatus orderStatus;
 }

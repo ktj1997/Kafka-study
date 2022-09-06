@@ -1,6 +1,6 @@
-package com.example.order.adapter.in.web;
+package com.example.order.adapter.in.rest;
 
-import com.example.order.adapter.in.web.req.CreateOrderRequest;
+import com.example.order.adapter.in.rest.req.CreateOrderRequest;
 import com.example.order.application.port.in.OrderService;
 import com.example.order.application.port.in.info.OrderInfo;
 import lombok.RequiredArgsConstructor;
