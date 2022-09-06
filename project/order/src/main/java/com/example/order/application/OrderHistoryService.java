@@ -1,6 +1,6 @@
 package com.example.order.application;
 
-import com.example.order.application.port.in.OrderHistoryService;
+import com.example.order.application.port.in.OrderHistoryUseCase;
 import com.example.order.application.port.in.info.OrderHistoryInfo;
 import com.example.order.application.port.out.persistence.OrderHistoryDataAccessor;
 import com.example.order.domain.OrderHistory;
@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class OrderHistoryServiceImpl implements OrderHistoryService {
+public class OrderHistoryService implements OrderHistoryUseCase {
 
   private final OrderHistoryDataAccessor orderHistoryDataAccessor;
 

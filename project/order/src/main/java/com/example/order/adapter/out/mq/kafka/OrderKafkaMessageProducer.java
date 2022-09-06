@@ -1,7 +1,7 @@
 package com.example.order.adapter.out.mq.kafka;
 
 import com.example.order.config.mq.kafka.KafkaTopicConstant;
-import com.example.order.adapter.out.mq.kafka.record.OrderCreatedRecord;
+import com.example.order.adapter.out.mq.kafka.record.OrderCreatedEvent;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ public class OrderKafkaMessageProducer {
   private final ObjectMapper objectMapper;
   private final KafkaTemplate<String, String> kafkaTemplate;
 
-  public void produceOrderCreatedEvent(OrderCreatedRecord record) {
+  public void produceOrderCreatedEvent(OrderCreatedEvent record) {
     try {
       String json = objectMapper.writeValueAsString(record);
       ListenableFuture<SendResult<String, String>> sendResult =

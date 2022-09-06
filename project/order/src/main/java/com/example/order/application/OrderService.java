@@ -1,14 +1,13 @@
 package com.example.order.application;
 
-import com.example.order.adapter.out.mq.kafka.record.OrderCreatedRecord;
-import com.example.order.application.port.in.OrderService;
+import com.example.order.adapter.out.mq.kafka.record.OrderCreatedEvent;
+import com.example.order.application.port.in.OrderUseCase;
 import com.example.order.application.port.in.command.ItemCommand;
 import com.example.order.application.port.in.command.OrderCommand;
 import com.example.order.application.port.in.info.OrderInfo;
 import com.example.order.application.port.out.mq.OrderMessageProducer;
 import com.example.order.application.port.out.persistence.OrderDataAccessor;
-import com.example.order.application.port.out.rest.ItemGateway;
-import com.example.order.application.port.out.rest.req.ReduceStockRequest;
+import com.example.order.application.port.out.rest.res.ItemDetailResponse;
 import com.example.order.application.utils.TransactionIdGenerator;
 import com.example.order.domain.Order;
 import com.example.order.domain.OrderStatus;
@@ -19,11 +18,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class OrderServiceImpl implements OrderService {
+public class OrderService implements OrderUseCase {
 
   private final OrderMessageProducer orderMessageProducer;
   private final OrderDataAccessor orderDataAccessor;
-  private final ItemGateway itemGateway;
+
+  private final ItemService itemService;
 
   @Override
   public OrderInfo createOrder(ItemCommand itemCommand, OrderCommand orderCommand) {
@@ -40,13 +40,21 @@ public class OrderServiceImpl implements OrderService {
                 orderCommand.getPhoneNumber(),
                 transactionId));
 
-    ReduceStockRequest req = new ReduceStockRequest(itemCommand.getQuantity());
-    itemGateway.reduceStock(order.getId(), req);
+    ItemDetailResponse item = itemService.getItem(itemCommand.getItemId());
+    itemService.reduceStock(item.getItemId(), itemCommand.getQuantity());
 
     orderMessageProducer.produce(
-        new OrderCreatedRecord(
+        new OrderCreatedEvent(
             order.getId(), transactionId, itemCommand.getItemId(), itemCommand.getQuantity()));
 
-    return new OrderInfo(order.getId(), transactionId);
+    return new OrderInfo(
+        order.getId(),
+        transactionId,
+        orderCommand.getUserName(),
+        item.getItemId(),
+        item.getItemName(),
+        item.getPrice(),
+        item.getQuantity(),
+        item.getPrice() * item.getQuantity());
   }
 }

@@ -10,7 +10,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderCreatedRecord extends Message {
+public class OrderCreatedEvent extends Message {
   private Long orderId;
   private String transactionId;
   private Long itemId;

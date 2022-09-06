@@ -1,7 +1,11 @@
 package com.example.order.application.port.out.rest;
 
 import com.example.order.application.port.out.rest.req.ReduceStockRequest;
+import com.example.order.application.port.out.rest.res.ItemDetailResponse;
 
 public interface ItemGateway {
-  void reduceStock(Long id, ReduceStockRequest req);
+
+  ItemDetailResponse getItemDetail(Long id);
+
+  boolean reduceStock(Long id, ReduceStockRequest req);
 }

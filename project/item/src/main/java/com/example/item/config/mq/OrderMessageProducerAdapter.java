@@ -1,7 +1,7 @@
-package com.example.order.config.mq;
+package com.example.item.config.mq;
 
 import com.example.order.adapter.out.mq.kafka.OrderKafkaMessageProducer;
-import com.example.order.adapter.out.mq.kafka.record.OrderCreatedEvent;
+import com.example.order.adapter.out.mq.kafka.record.OrderCreatedRecord;
 import com.example.order.application.port.out.mq.OrderMessageProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -13,8 +13,8 @@ public class OrderMessageProducerAdapter implements OrderMessageProducer {
 
   @Override
   public void produce(Message message) {
-    if (message instanceof OrderCreatedEvent) {
-      orderKafkaMessageProducer.produceOrderCreatedEvent((OrderCreatedEvent) message);
+    if (message instanceof OrderCreatedRecord) {
+      orderKafkaMessageProducer.produceOrderCreatedEvent((OrderCreatedRecord) message);
     } else {
       throw new RuntimeException("Message가 정의되지 않아, Produce에 실패하였습니다");
     }

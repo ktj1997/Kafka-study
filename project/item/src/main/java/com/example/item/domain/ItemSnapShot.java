@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ItemHistory {
+public class ItemSnapShot {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

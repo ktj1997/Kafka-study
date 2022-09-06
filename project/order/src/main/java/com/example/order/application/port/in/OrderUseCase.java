@@ -4,6 +4,6 @@ import com.example.order.application.port.in.command.ItemCommand;
 import com.example.order.application.port.in.command.OrderCommand;
 import com.example.order.application.port.in.info.OrderInfo;
 
-public interface OrderService {
+public interface OrderUseCase {
   OrderInfo createOrder(ItemCommand itemCommand, OrderCommand orderCommand);
 }
