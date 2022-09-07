@@ -20,7 +20,10 @@ public class OrderKafkaMessageConsumer {
   private final ObjectMapper objectMapper;
   private final OrderHistoryUseCase orderHistoryUseCase;
 
-  @KafkaListener(id = "order-created-event-consumer", topics = KafkaTopicConstant.CREATE_ORDER)
+  @KafkaListener(
+      id = "order-created-event-consumer",
+      topics = KafkaTopicConstant.CREATE_ORDER,
+      groupId = "order-api")
   public void consumeOrderCreatedEvent(ConsumerRecord<String, String> consumerRecord) {
     try {
 

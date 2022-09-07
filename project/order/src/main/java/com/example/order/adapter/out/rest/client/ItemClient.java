@@ -17,5 +17,5 @@ public interface ItemClient {
   ItemDetailResponse getItemDetail(@PathVariable Long itemId);
 
   @PostMapping(ItemClientConstant.STOCK_DECREASE)
-  boolean reduceStock(@PathVariable Long itemId, @RequestBody ReduceStockRequest req);
+  int reduceStock(@PathVariable Long itemId, @RequestBody ReduceStockRequest req);
 }

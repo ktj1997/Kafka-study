@@ -15,11 +15,11 @@ import javax.persistence.Id;
 @AllArgsConstructor
 public class ItemSnapShot {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
 
-    private int transaction_id;
-    private long item_id;
-    private int quantity;
+  private int transaction_id;
+  private long item_id;
+  private int price;
 }

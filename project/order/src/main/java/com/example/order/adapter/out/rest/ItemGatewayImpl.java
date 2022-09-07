@@ -19,7 +19,7 @@ public class ItemGatewayImpl implements ItemGateway {
   }
 
   @Override
-  public boolean reduceStock(Long id, ReduceStockRequest req) {
+  public int reduceStock(Long id, ReduceStockRequest req) {
     return itemClient.reduceStock(id, req);
   }
 }

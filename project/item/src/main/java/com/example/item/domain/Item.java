@@ -1,6 +1,9 @@
 package com.example.item.domain;
 
 import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +17,7 @@ import javax.persistence.Id;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "items")
 public class Item {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,5 +27,13 @@ public class Item {
 
   @Column private int price;
 
-  @Column private int quantity;
+  @Column private int stock;
+
+  @Column
+  @Enumerated(EnumType.STRING)
+  private ItemStatus status;
+
+  public void updateStatus(ItemStatus status) {
+    this.status = status;
+  }
 }

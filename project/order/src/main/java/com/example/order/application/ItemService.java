@@ -15,8 +15,8 @@ public class ItemService {
     return itemGateway.getItemDetail(itemId);
   }
 
-  public boolean reduceStock(Long id, int quantity) {
-    ReduceStockRequest req = new ReduceStockRequest(quantity);
-    return itemGateway.reduceStock(id, req);
+  public int reduceStock(Long itemId, String userId, String transactionId, int quantity) {
+    ReduceStockRequest req = new ReduceStockRequest(userId, transactionId, quantity);
+    return itemGateway.reduceStock(itemId, req);
   }
 }

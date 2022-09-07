@@ -1,14 +1,15 @@
-package com.example.order.application.port.out.rest.res;
+package com.example.item.application.port.in.info;
 
+import com.example.item.domain.ItemStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class ItemDetailResponse {
+public class ItemInfo {
   private Long itemId;
   private String itemName;
   private int price;
   private int stock;
-  private String status;
+  private ItemStatus status;
 }

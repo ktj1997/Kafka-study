@@ -7,5 +7,5 @@ public interface ItemGateway {
 
   ItemDetailResponse getItemDetail(Long id);
 
-  boolean reduceStock(Long id, ReduceStockRequest req);
+  int reduceStock(Long id, ReduceStockRequest req);
 }

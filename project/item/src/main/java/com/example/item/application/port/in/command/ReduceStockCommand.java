@@ -1,11 +1,12 @@
-package com.example.order.application.port.out.rest.req;
+package com.example.item.application.port.in.command;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class ReduceStockRequest {
+public class ReduceStockCommand {
+  private Long itemId;
   private String userId;
   private String transactionId;
   private int quantity;

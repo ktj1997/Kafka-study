@@ -41,7 +41,12 @@ public class OrderService implements OrderUseCase {
                 transactionId));
 
     ItemDetailResponse item = itemService.getItem(itemCommand.getItemId());
-    itemService.reduceStock(item.getItemId(), itemCommand.getQuantity());
+    int reduceStockCount =
+        itemService.reduceStock(
+            item.getItemId(),
+            order.getUserId(),
+            order.getTransactionId(),
+            itemCommand.getQuantity());
 
     orderMessageProducer.produce(
         new OrderCreatedEvent(
@@ -54,7 +59,7 @@ public class OrderService implements OrderUseCase {
         item.getItemId(),
         item.getItemName(),
         item.getPrice(),
-        item.getQuantity(),
-        item.getPrice() * item.getQuantity());
+        reduceStockCount,
+        item.getPrice() * itemCommand.getQuantity());
   }
 }
