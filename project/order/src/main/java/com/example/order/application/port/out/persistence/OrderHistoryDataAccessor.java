@@ -1,6 +1,6 @@
 package com.example.order.application.port.out.persistence;
 
-import com.example.order.domain.OrderHistory;
+import com.example.order.domain.entity.OrderHistory;
 import java.util.List;
 
 public interface OrderHistoryDataAccessor {

@@ -3,7 +3,7 @@ package com.example.order.application;
 import com.example.order.application.port.in.OrderHistoryUseCase;
 import com.example.order.application.port.in.info.OrderHistoryInfo;
 import com.example.order.application.port.out.persistence.OrderHistoryDataAccessor;
-import com.example.order.domain.OrderHistory;
+import com.example.order.domain.entity.OrderHistory;
 import com.example.order.domain.OrderStatus;
 import java.util.List;
 import java.util.stream.Collectors;

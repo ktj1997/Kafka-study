@@ -1,6 +1,7 @@
-package com.example.order.domain;
+package com.example.order.domain.entity;
 
 import com.example.order.adapter.out.persistence.jpa.entity.BaseTimeEntity;
+import com.example.order.domain.OrderStatus;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;

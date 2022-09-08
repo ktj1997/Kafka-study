@@ -2,7 +2,7 @@ package com.example.order.adapter.out.persistence;
 
 import com.example.order.adapter.out.persistence.jpa.repository.OrderHistoryRepository;
 import com.example.order.application.port.out.persistence.OrderHistoryDataAccessor;
-import com.example.order.domain.OrderHistory;
+import com.example.order.domain.entity.OrderHistory;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

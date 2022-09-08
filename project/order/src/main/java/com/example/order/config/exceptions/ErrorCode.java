@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum ErrorCode {
-  INTERNAL_SERVER_ERROR("500");
+  ENTITY_NOT_FOUND("404", "Entity Not Found"),
+  INTERNAL_SERVER_ERROR("500", "Internal Server Error");
   private final String code;
+  private final String message;
 }

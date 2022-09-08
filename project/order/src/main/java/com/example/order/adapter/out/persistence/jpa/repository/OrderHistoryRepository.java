@@ -1,6 +1,6 @@
 package com.example.order.adapter.out.persistence.jpa.repository;
 
-import com.example.order.domain.OrderHistory;
+import com.example.order.domain.entity.OrderHistory;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

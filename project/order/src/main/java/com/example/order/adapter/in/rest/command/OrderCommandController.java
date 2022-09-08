@@ -1,7 +1,7 @@
-package com.example.order.adapter.in.rest;
+package com.example.order.adapter.in.rest.command;
 
-import com.example.order.adapter.in.rest.req.CreateOrderRequest;
-import com.example.order.application.port.in.OrderUseCase;
+import com.example.order.adapter.in.rest.command.req.CreateOrderCommandRequest;
+import com.example.order.application.port.in.AcceptOrderUseCase;
 import com.example.order.application.port.in.info.OrderInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/orders")
-public class OrderController {
+public class OrderCommandController {
 
-  private final OrderUseCase orderUseCase;
+  private final AcceptOrderUseCase acceptOrderUseCase;
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public ResponseEntity<OrderInfo> createOrder(@RequestBody CreateOrderRequest req) {
-    OrderInfo info = orderUseCase.createOrder(req.getItem(), req.getOrder());
+  public ResponseEntity<OrderInfo> acceptOrder(@RequestBody CreateOrderCommandRequest req) {
+    OrderInfo info = acceptOrderUseCase.acceptOrder(req.getItem(), req.getOrder());
 
     return ResponseEntity.status(HttpStatus.CREATED).body(info);
   }
