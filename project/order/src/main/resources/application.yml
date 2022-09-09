@@ -3,7 +3,7 @@ spring:
     name: "order-application"
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${DATASOURCE_URL:jdbc:mysql://localhost:3306/eda}
+    url: ${DATASOURCE_URL:jdbc:mysql://localhost:3306/order_db}
     password: ${DATASOURCE_PASSWORD:1q2w3e4r}
     username: ${DATASOURCE_USERNAME:root}
   jpa:
@@ -12,6 +12,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
+  data:
+    mongodb:
+      host: ${MONGODB_HOST:localhost}
+      port: ${MONGODB_PORT:27017}
 server:
   port: 8081
 kafka:

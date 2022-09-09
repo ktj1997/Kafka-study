@@ -3,7 +3,7 @@ spring:
     name: "item-application"
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${DATASOURCE_URL:jdbc:mysql://localhost:3306/eda}
+    url: ${DATASOURCE_URL:jdbc:mysql://localhost:3306/item_db}
     password: ${DATASOURCE_PASSWORD:1q2w3e4r}
     username: ${DATASOURCE_USERNAME:root}
   jpa:
@@ -16,6 +16,12 @@ spring:
   sql:
     init:
       mode: always
+  data:
+    mongodb:
+      host: ${MONGODB_HOST:localhost}
+      port: ${MONGODB_PORT:27017}
+      username: ${MONGODB_USER:root}
+      password: ${MONGODB_PASSWORD:1q2w3e4r}
   redis:
     host: ${REDIS_HOST:localhost}
     port: ${REDIS_PORT:6379}

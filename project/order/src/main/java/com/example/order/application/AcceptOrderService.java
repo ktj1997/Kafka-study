@@ -11,6 +11,7 @@ import com.example.order.application.port.out.rest.res.ItemDetailResponse;
 import com.example.order.application.utils.TransactionIdGenerator;
 import com.example.order.domain.entity.Order;
 import com.example.order.domain.OrderStatus;
+import com.example.order.domain.vo.Buyer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,22 +30,19 @@ public class AcceptOrderService implements AcceptOrderUseCase {
   public OrderInfo acceptOrder(ItemCommand itemCommand, OrderCommand orderCommand) {
     String transactionId = TransactionIdGenerator.generate();
 
+    Buyer buyer =
+        new Buyer(
+            orderCommand.getUserId(), orderCommand.getUserName(), orderCommand.getPhoneNumber());
+
     Order order =
         orderDataAccessor.save(
-            new Order(
-                null,
-                OrderStatus.CREATED,
-                orderCommand.getUserId(),
-                orderCommand.getUserName(),
-                orderCommand.getAddress(),
-                orderCommand.getPhoneNumber(),
-                transactionId));
+            new Order(null, transactionId, OrderStatus.CREATED, buyer, orderCommand.getAddress()));
 
     ItemDetailResponse item = itemService.getItem(itemCommand.getItemId());
     int reduceStockCount =
         itemService.reduceStock(
             item.getItemId(),
-            order.getUserId(),
+            order.getBuyer().getName(),
             order.getTransactionId(),
             itemCommand.getQuantity());
 

@@ -2,31 +2,62 @@ version: "3.7"
 
 services:
   zookeeper:
-    image: bitnami/zookeeper
+    image: confluentinc/cp-zookeeper:7.2.1
+    container_name: example_zookeeper
     restart: always
     ports:
       - "2181:2181"
-    volumes:
-      - "zookeeper_data:/bitnami"
     environment:
-      - ALLOW_ANONYMOUS_LOGIN=yes
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_SERVERS: zoo1:2888:3888
   kafka:
-    image: bitnami/kafka
+    image: confluentinc/cp-kafka:7.2.1
+    container_name: example_kafka
     ports:
       - "9092:9092"
     restart: always
-    volumes:
-      - "kafka_data:/bitnami"
     environment:
-      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
-      - ALLOW_PLAINTEXT_LISTENER=yes
-      - KAFKA_LISTENERS=PLAINTEXT://:9092
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
     depends_on:
       - zookeeper
-
+  redis:
+    image: redis:3
+    container_name: example_redis
+    ports:
+      - "6379:6379"
+  mongodb:
+    image: mongo
+    container_name: example_mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 1q2w3e4r
+      MONGO_INITDB_DATABASE: example
+    volumes:
+      - "mongo_data:/data/db"
+    ports:
+      - 27017:27017
+    command: mongod
+  mysql:
+    image: mysql:8.0
+    container_name: example_mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 1q2w3e4r
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - "mysql_data:/var/lib/mysql"
 volumes:
-  zookeeper_data:
+  mongo_data:
     driver: local
-  kafka_data:
+  mysql_data:
     driver: local
