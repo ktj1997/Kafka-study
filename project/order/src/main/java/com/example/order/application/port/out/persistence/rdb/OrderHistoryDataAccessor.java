@@ -1,0 +1,11 @@
+package com.example.order.application.port.out.persistence.rdb;
+
+import com.example.order.domain.entity.OrderHistory;
+import java.util.List;
+
+public interface OrderHistoryDataAccessor {
+
+  List<OrderHistory> findAll(Long orderId, String transactionId);
+
+  OrderHistory save(OrderHistory orderHistory);
+}

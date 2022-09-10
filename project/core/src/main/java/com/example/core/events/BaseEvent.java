@@ -2,11 +2,11 @@ package com.example.core.events;
 
 import com.example.core.messages.Message;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-@Getter
+@Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor

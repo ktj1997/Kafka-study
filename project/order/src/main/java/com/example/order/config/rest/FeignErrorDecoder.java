@@ -1,8 +1,8 @@
 package com.example.order.config.rest;
 
-import com.example.order.config.exceptions.ApiException;
-import com.example.order.config.exceptions.ErrorCode;
-import com.example.order.config.exceptions.ErrorResponse;
+import com.example.core.exceptions.ApiException;
+import com.example.core.exceptions.GlobalErrorCode;
+import com.example.core.exceptions.ErrorResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Response;
 import feign.codec.ErrorDecoder;
@@ -24,7 +24,7 @@ public class FeignErrorDecoder implements ErrorDecoder {
               response.body().asReader(Charset.defaultCharset()), ErrorResponse.class);
       return new ApiException(errorResponse.getCode(), errorResponse.getMessage());
     } catch (Throwable throwable) {
-      throw new ApiException(ErrorCode.INTERNAL_SERVER_ERROR.getCode(), throwable.getMessage());
+      throw new ApiException(GlobalErrorCode.INTERNAL_SERVER_ERROR.getCode(), throwable.getMessage());
     }
   }
 }

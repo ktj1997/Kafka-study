@@ -1,7 +1,7 @@
 package com.example.order.adapter.out.mq.kafka;
 
-import com.example.order.config.mq.kafka.KafkaTopicConstant;
-import com.example.order.adapter.out.mq.kafka.record.OrderCreatedEvent;
+import com.example.core.events.BaseEvent;
+import com.example.core.events.EventProducer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,16 +16,17 @@ import org.springframework.util.concurrent.ListenableFuture;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class OrderKafkaMessageProducer {
+public class OrderKafkaMessageProducer implements EventProducer {
 
   private final ObjectMapper objectMapper;
   private final KafkaTemplate<String, String> kafkaTemplate;
 
-  public void produceOrderCreatedEvent(OrderCreatedEvent record) {
+  @Override
+  public void produce(String topic, BaseEvent event) {
     try {
-      String json = objectMapper.writeValueAsString(record);
+      String json = objectMapper.writeValueAsString(event);
       ListenableFuture<SendResult<String, String>> sendResult =
-          kafkaTemplate.send(KafkaTopicConstant.CREATE_ORDER, json);
+          kafkaTemplate.send(topic, json);
 
       sendResult.addCallback(
           new KafkaSendCallback<>() {

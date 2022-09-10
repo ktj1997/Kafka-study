@@ -1,6 +1,5 @@
 package com.example.order.adapter.in.rest.query;
 
-import com.example.order.application.port.in.GetOrderUseCase;
 import com.example.order.application.port.in.info.OrderInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
