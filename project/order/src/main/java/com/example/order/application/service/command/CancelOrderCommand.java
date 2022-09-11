@@ -1,4 +1,4 @@
-package com.example.order.application.port.in.command;
+package com.example.order.application.service.command;
 
 import com.example.order.core.infrastructure.command.BaseCommand;
 import java.time.LocalDateTime;

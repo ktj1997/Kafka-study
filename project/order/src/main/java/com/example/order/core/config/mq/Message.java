@@ -1,3 +1,3 @@
-package com.example.order.config.mq;
+package com.example.order.core.config.mq;
 
 public abstract class Message {}

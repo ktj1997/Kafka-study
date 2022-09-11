@@ -1,2 +1,7 @@
-package com.example.order.application.port.out.rest;public interface ShippingGateway {
+package com.example.order.application.port.out.rest;
+
+import com.example.order.application.port.out.rest.res.AddressDetailResponse;
+
+public interface ShippingGateway {
+  AddressDetailResponse getAddressDetail(Long id);
 }

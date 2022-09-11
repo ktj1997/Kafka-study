@@ -1,4 +1,4 @@
-package com.example.core.commands;
+package com.example.order.core.infrastructure.command;
 
 @FunctionalInterface
 public interface CommandHandlerMethod<T extends BaseCommand> {

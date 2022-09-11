@@ -1,4 +1,4 @@
-package com.example.core.domain;
+package com.example.order.core.infrastructure.domain;
 
 import com.example.core.events.BaseEvent;
 import java.lang.reflect.InvocationTargetException;

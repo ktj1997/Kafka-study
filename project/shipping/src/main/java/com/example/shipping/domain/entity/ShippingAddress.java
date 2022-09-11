@@ -1,2 +1,5 @@
-package com.example.shipping.domain.entity;public class ShippingAddress {
+package com.example.shipping.domain.entity;
+
+public class ShippingAddress {
+
 }

@@ -1,4 +1,4 @@
-package com.example.order.config.mq.kafka;
+package com.example.order.core.config.mq.kafka;
 
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;

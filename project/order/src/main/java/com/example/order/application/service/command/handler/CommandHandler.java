@@ -1,7 +1,7 @@
-package com.example.order.application.handler.command;
+package com.example.order.application.service.command.handler;
 
-import com.example.order.application.port.in.command.CancelOrderCommand;
-import com.example.order.application.port.in.command.CreateOrderCommand;
+import com.example.order.application.service.command.CancelOrderCommand;
+import com.example.order.application.service.command.CreateOrderCommand;
 
 public interface CommandHandler {
   void handle(CreateOrderCommand command);

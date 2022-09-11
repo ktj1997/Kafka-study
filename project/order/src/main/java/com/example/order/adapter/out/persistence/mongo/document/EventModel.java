@@ -1,5 +1,6 @@
-package com.example.core.events;
+package com.example.order.adapter.out.persistence.mongo.document;
 
+import com.example.core.events.BaseEvent;
 import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Getter;

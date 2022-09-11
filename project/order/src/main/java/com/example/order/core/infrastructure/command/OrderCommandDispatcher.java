@@ -1,8 +1,5 @@
-package com.example.order.config.infrastructure.command;
+package com.example.order.core.infrastructure.command;
 
-import com.example.core.commands.BaseCommand;
-import com.example.core.commands.CommandHandlerMethod;
-import com.example.core.commands.CommandDispatcher;
 import com.example.core.exceptions.ApiException;
 import com.example.core.exceptions.GlobalErrorCode;
 import java.util.HashMap;

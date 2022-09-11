@@ -1,4 +1,4 @@
-package com.example.order.adapter.out.rest;
+package com.example.order.adapter.out.rest.client;
 
 public class ItemClientConstant {
 

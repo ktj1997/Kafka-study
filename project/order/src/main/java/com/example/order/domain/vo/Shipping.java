@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Shipping {
   private String postNo;
-  private String address;
+  private String streetAddress;
   private String addressDetail;
 }

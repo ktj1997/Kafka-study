@@ -1,6 +1,7 @@
-package com.example.core.events;
+package com.example.order.core.infrastructure.event;
 
-import com.example.core.domain.AggregateRoot;
+
+import com.example.order.core.infrastructure.domain.AggregateRoot;
 
 public interface EventSourcingHandler<T> {
   void save(AggregateRoot aggregate);

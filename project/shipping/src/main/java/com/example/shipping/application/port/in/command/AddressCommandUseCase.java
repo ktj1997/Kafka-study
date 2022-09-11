@@ -1,7 +1,7 @@
-package com.example.shipping.application.port.in;
+package com.example.shipping.application.port.in.command;
 
-import com.example.shipping.application.port.in.command.RegisterAddressCommandDto;
+import com.example.shipping.adatper.in.rest.command.req.RegisterAddressRequest;
 
 public interface AddressCommandUseCase {
-  Long registerShippingAddress(RegisterAddressCommandDto commandDto);
+  Long registerShippingAddress(RegisterAddressRequest commandDto);
 }

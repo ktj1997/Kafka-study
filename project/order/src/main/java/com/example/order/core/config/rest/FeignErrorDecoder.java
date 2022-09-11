@@ -1,4 +1,4 @@
-package com.example.order.config.rest;
+package com.example.order.core.config.rest;
 
 import com.example.core.exceptions.ApiException;
 import com.example.core.exceptions.GlobalErrorCode;

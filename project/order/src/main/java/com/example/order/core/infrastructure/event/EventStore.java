@@ -1,5 +1,6 @@
-package com.example.core.events;
+package com.example.order.core.infrastructure.event;
 
+import com.example.core.events.BaseEvent;
 import java.util.List;
 
 /**

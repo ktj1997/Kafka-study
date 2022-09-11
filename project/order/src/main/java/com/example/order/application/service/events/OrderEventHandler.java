@@ -1,4 +1,4 @@
-package com.example.order.application.handler.events;
+package com.example.order.application.service.events;
 
 import com.example.order.application.events.OrderCanceledEvent;
 import com.example.order.application.events.OrderCreatedEvent;

@@ -42,6 +42,8 @@ public class Order extends BaseEntity {
   @Embedded private Shipping shipping;
   @Embedded private CancelInfo cancelInfo;
 
+  @Column private int totalPrice;
+
   public void cancel(String reason) {
     this.status = OrderStatus.CANCELED;
     this.cancelInfo = new CancelInfo(reason, LocalDateTime.now());

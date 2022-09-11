@@ -1,4 +1,4 @@
-package com.example.order.config.rest;
+package com.example.order.core.config.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.codec.ErrorDecoder;

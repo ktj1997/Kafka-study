@@ -1,24 +1,23 @@
 package com.example.order.adapter.out.persistence.mongo.store;
 
 import com.example.core.events.BaseEvent;
-import com.example.core.events.EventModel;
+import com.example.order.adapter.out.persistence.mongo.document.EventModel;
 import com.example.core.events.EventProducer;
 import com.example.core.exceptions.AggregateNotFoundException;
 import com.example.core.exceptions.ConcurrencyException;
 import com.example.core.exceptions.GlobalErrorCode;
-import com.example.core.events.EventStoreRepository;
-import com.example.order.application.port.out.persistence.mongo.OrderEventStore;
+import com.example.order.core.infrastructure.event.EventStore;
+import com.example.order.core.infrastructure.event.EventStoreRepository;
 import com.example.order.domain.OrderAggregate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Component
 @RequiredArgsConstructor
-public class OrderEventStoreAdapter implements OrderEventStore {
+public class OrderEventStoreAdapter implements EventStore {
 
   private final EventProducer eventProducer;
   private final EventStoreRepository eventStoreRepository;

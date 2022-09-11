@@ -1,8 +1,7 @@
-package com.example.shipping.adatper.in.rest;
+package com.example.shipping.adatper.in.rest.command;
 
-import com.example.shipping.adatper.in.rest.req.RegisterAddressRequest;
-import com.example.shipping.application.port.in.ShippingCommandUseCase;
-import com.example.shipping.application.port.in.command.RegisterAddressCommandDto;
+import com.example.shipping.adatper.in.rest.command.req.RegisterAddressRequest;
+import com.example.shipping.application.port.in.command.AddressCommandUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,17 +12,16 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/shipping")
+@RequestMapping("/address")
 @RequiredArgsConstructor
-public class ShippingCommandController {
+public class AddressCommandController {
 
-  private final ShippingCommandUseCase commandUseCase;
+  private final AddressCommandUseCase commandUseCase;
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public ResponseEntity<Long> registerShippingAddress(@RequestBody RegisterAddressRequest request) {
-    RegisterAddressCommandDto commandDto = request.toCommandDto();
-    Long response = commandUseCase.registerShippingAddress(commandDto);
+    Long response = commandUseCase.registerShippingAddress(request);
     return new ResponseEntity<Long>(response, HttpStatus.CREATED);
   }
 }

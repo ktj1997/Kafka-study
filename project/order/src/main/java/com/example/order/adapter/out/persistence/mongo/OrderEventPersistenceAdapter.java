@@ -1,10 +1,9 @@
 package com.example.order.adapter.out.persistence.mongo;
 
-import com.example.core.domain.AggregateRoot;
+import com.example.order.core.infrastructure.domain.AggregateRoot;
 import com.example.core.events.BaseEvent;
-import com.example.core.events.EventSourcingHandler;
 import com.example.order.application.port.out.persistence.mongo.OrderEventSourcingHandler;
-import com.example.order.application.port.out.persistence.mongo.OrderEventStore;
+import com.example.order.core.infrastructure.event.EventStore;
 import com.example.order.domain.OrderAggregate;
 import java.util.Comparator;
 import java.util.List;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class OrderEventPersistenceAdapter implements OrderEventSourcingHandler {
 
-  private final OrderEventStore eventStore;
+  private final EventStore eventStore;
 
   @Override
   public void save(AggregateRoot aggregate) {

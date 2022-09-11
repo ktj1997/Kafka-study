@@ -1,10 +1,10 @@
 package com.example.order.domain;
 
-import com.example.core.domain.AggregateRoot;
+import com.example.order.core.infrastructure.domain.AggregateRoot;
 import com.example.order.application.events.OrderCanceledEvent;
-import com.example.order.application.port.in.command.CancelOrderCommand;
+import com.example.order.application.service.command.CancelOrderCommand;
 import com.example.order.application.events.OrderCreatedEvent;
-import com.example.order.application.port.in.command.CreateOrderCommand;
+import com.example.order.application.service.command.CreateOrderCommand;
 import com.example.order.domain.vo.OrderStatus;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

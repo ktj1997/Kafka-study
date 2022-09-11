@@ -1,9 +1,8 @@
-package com.example.order.config.infrastructure.command;
+package com.example.order.core.infrastructure.command;
 
-import com.example.core.commands.CommandDispatcher;
-import com.example.order.application.port.in.command.CancelOrderCommand;
-import com.example.order.application.handler.command.CommandHandler;
-import com.example.order.application.port.in.command.CreateOrderCommand;
+import com.example.order.application.service.command.CancelOrderCommand;
+import com.example.order.application.service.command.handler.CommandHandler;
+import com.example.order.application.service.command.CreateOrderCommand;
 import javax.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;

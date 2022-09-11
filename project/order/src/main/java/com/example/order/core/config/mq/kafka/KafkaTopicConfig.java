@@ -1,4 +1,4 @@
-package com.example.order.config.mq.kafka;
+package com.example.order.core.config.mq.kafka;
 
 import java.lang.reflect.Modifier;
 import java.util.Arrays;

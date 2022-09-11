@@ -1,6 +1,6 @@
-package com.example.core.events;
+package com.example.order.core.infrastructure.event;
 
-import com.example.core.events.EventModel;
+import com.example.order.adapter.out.persistence.mongo.document.EventModel;
 import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
