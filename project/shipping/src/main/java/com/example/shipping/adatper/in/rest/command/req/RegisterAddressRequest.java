@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterAddressRequest {
+  private String userId;
   private String postNo;
   private String streetAddress;
   private String addressDetail;

@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: "shipping-application"
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DATASOURCE_URL:jdbc:mysql://localhost:3306/shipping_db?createDatabaseIfNotExist=true}
+    password: ${DATASOURCE_PASSWORD:1q2w3e4r}
+    username: ${DATASOURCE_USERNAME:root}
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+server:
+  port: 8081
+kafka:
+  broker:
+    url: ${KAFKA_BOOTSTRAP_SERVER:localhost:9092}

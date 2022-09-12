@@ -5,6 +5,8 @@ import com.example.shipping.application.port.in.command.AddressCommandUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,5 +25,12 @@ public class AddressCommandController {
   public ResponseEntity<Long> registerShippingAddress(@RequestBody RegisterAddressRequest request) {
     Long response = commandUseCase.registerShippingAddress(request);
     return new ResponseEntity<Long>(response, HttpStatus.CREATED);
+  }
+
+  @DeleteMapping("/{id}")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  public ResponseEntity<Void> deleteAddress(@PathVariable Long id) {
+    commandUseCase.deleteShippingAddress(id);
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 }

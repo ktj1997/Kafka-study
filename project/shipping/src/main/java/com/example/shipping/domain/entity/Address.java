@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Cleanup;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -22,6 +23,9 @@ public class Address extends BaseEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(name = "user_id")
+  private String userId;
+
   @Column(name = "post_no")
   private String postNo;
 
@@ -30,4 +34,11 @@ public class Address extends BaseEntity {
 
   @Column(name = "address_detail")
   private String addressDetail;
+
+  @Column(name = "is_deleted")
+  private boolean isDeleted;
+
+  public void delete() {
+    this.isDeleted = false;
+  }
 }
