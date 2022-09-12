@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 @Transactional
 @RequiredArgsConstructor
-public class OrderEventConsumer implements EventConsumer {
+public class OrderQueryEventConsumerAdapter implements OrderQueryEventConsumer {
   private final EventHandler eventHandler;
 
   @Override

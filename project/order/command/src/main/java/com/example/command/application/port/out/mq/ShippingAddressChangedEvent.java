@@ -1,6 +1,6 @@
 package com.example.command.application.port.out.mq;
 
-import com.example.query.domain.vo.Shipping;
+import com.example.library.domain.vo.Shipping;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

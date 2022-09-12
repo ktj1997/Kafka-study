@@ -7,7 +7,7 @@ import com.example.library.event.object.ShippingStatusChangedEvent;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.messaging.handler.annotation.Payload;
 
-public interface EventConsumer {
+public interface OrderQueryEventConsumer {
   void consume(@Payload OrderCreatedEvent event, Acknowledgment ack);
 
   void consume(@Payload OrderCanceledEvent event, Acknowledgment ack);
