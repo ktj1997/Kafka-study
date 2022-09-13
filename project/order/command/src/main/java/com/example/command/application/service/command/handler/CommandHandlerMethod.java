@@ -1,4 +1,4 @@
-package com.example.command.application.service.command.dispatcher;
+package com.example.command.application.service.command.handler;
 
 import com.example.command.application.service.command.BaseCommand;
 
