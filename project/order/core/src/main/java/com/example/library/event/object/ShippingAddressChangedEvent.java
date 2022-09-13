@@ -10,7 +10,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ShippingAddressChangedEvent {
+public class ShippingAddressChangedEvent extends BaseEvent {
   private String orderId;
   private Shipping shipping;
 }

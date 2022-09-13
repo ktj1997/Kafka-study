@@ -1,10 +1,12 @@
 package com.example.command.application.service.command;
 
+import com.example.library.domain.vo.ShippingStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class UpdateShippingStatusCommand {
-
+public class UpdateShippingStatusCommand extends BaseCommand{
+  private String orderId;
+  private ShippingStatus shippingStatus;
 }

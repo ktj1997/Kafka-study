@@ -7,7 +7,5 @@ import lombok.Getter;
 @AllArgsConstructor
 public class ShippingStatusChangedMessage {
   private String orderId;
-  private String postNo;
-  private String streetAddress;
-  private String addressDetail;
+  private String shippingStatus;
 }
