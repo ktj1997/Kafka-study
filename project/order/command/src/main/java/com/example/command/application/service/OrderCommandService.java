@@ -1,19 +1,19 @@
 package com.example.command.application.service;
 
+import com.example.command.application.port.in.dto.CreateOrderCommandDto;
 import com.example.command.application.service.command.dispatcher.CommandDispatcher;
-import com.example.command.adapter.in.rest.req.CreateOrderCommandRequest;
 import com.example.command.application.service.command.CreateOrderCommand;
 import com.example.command.application.port.in.OrderCommandUseCase;
 import com.example.command.application.port.out.rest.ItemGateway;
 import com.example.command.application.port.out.rest.ShippingGateway;
 import com.example.command.adapter.out.rest.res.AddressDetailResponse;
 import com.example.command.adapter.out.rest.res.ItemDetailResponse;
-import com.example.command.domain.vo.Buyer;
-import com.example.command.domain.vo.Item;
-import com.example.command.domain.vo.Shipping;
 
 import com.example.core.exceptions.ApiException;
 import com.example.core.exceptions.GlobalErrorCode;
+import com.example.library.domain.vo.Buyer;
+import com.example.library.domain.vo.Item;
+import com.example.library.domain.vo.Shipping;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -32,25 +32,19 @@ public class OrderCommandService implements OrderCommandUseCase {
 
   @Override
   @Transactional
-  public String createOrder(CreateOrderCommandRequest req) {
+  public CreateOrderCommandDto.Response createOrder(CreateOrderCommandDto.Request dto) {
     String id = UUID.randomUUID().toString();
     try {
-      Buyer buyer =
-          Buyer.builder()
-              .id(req.getUserId())
-              .name(req.getUserName())
-              .phoneNumber(req.getPhoneNumber())
-              .build();
-
-      ItemDetailResponse itemDetail = itemGateway.getItemDetail(req.getItemId());
+      Buyer buyer = dto.getBuyer();
+      ItemDetailResponse itemDetail = itemGateway.getItemDetail(dto.getItemId());
       Item item =
           Item.builder()
               .itemId(itemDetail.getItemId())
               .itemName(itemDetail.getItemName())
-              .quantity(req.getQuantity())
+              .quantity(dto.getQuantity())
               .build();
 
-      AddressDetailResponse addressDetail = shippingGateway.getAddressDetail(req.getShippingId());
+      AddressDetailResponse addressDetail = shippingGateway.getAddressDetail(dto.getShippingId());
       Shipping shipping =
           Shipping.builder()
               .postNo(addressDetail.getPostNo())
@@ -69,7 +63,7 @@ public class OrderCommandService implements OrderCommandUseCase {
       command.setId(id);
       dispatcher.send(command);
 
-      return id;
+      return new CreateOrderCommandDto.Response(id);
 
     } catch (Throwable throwable) {
       throwable.printStackTrace();

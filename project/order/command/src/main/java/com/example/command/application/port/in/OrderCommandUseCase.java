@@ -1,8 +1,7 @@
 package com.example.command.application.port.in;
 
-
-import com.example.command.adapter.in.rest.req.CreateOrderCommandRequest;
+import com.example.command.application.port.in.dto.CreateOrderCommandDto;
 
 public interface OrderCommandUseCase {
-  String createOrder(CreateOrderCommandRequest req);
+  CreateOrderCommandDto.Response createOrder(CreateOrderCommandDto.Request dto);
 }

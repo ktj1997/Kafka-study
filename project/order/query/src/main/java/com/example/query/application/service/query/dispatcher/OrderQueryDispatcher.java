@@ -33,6 +33,6 @@ public class OrderQueryDispatcher implements QueryDispatcher {
           GlobalErrorCode.INTERNAL_SERVER_ERROR.getCode(),
           "Cannot Send command to more than one handler");
 
-    return (List<T>)handlers.get(0).handle(query);
+    return handlers.get(0).handle(query);
   }
 }

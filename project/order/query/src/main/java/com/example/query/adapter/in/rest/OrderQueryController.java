@@ -1,7 +1,7 @@
 package com.example.query.adapter.in.rest;
 
 import com.example.query.application.port.in.OrderQueryUseCase;
-import com.example.query.application.port.in.info.OrderInfo;
+import com.example.query.application.port.in.dto.FindOrderQueryDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +20,9 @@ public class OrderQueryController {
 
   @GetMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)
-  public ResponseEntity<OrderInfo> getOrder(@PathVariable String id) {
-    OrderInfo orderInfo = orderQueryUseCase.getOrder(id);
-    return ResponseEntity.ok(orderInfo);
+  public ResponseEntity< FindOrderQueryDto.Response > getOrder(@PathVariable String id) {
+    FindOrderQueryDto.ByIdRequest reqDto = new FindOrderQueryDto.ByIdRequest(id);
+    FindOrderQueryDto.Response resDto = orderQueryUseCase.getOrder(reqDto);
+    return ResponseEntity.ok(resDto);
   }
 }

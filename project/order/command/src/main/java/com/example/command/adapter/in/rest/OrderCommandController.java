@@ -3,6 +3,8 @@ package com.example.command.adapter.in.rest;
 
 import com.example.command.adapter.in.rest.req.CreateOrderCommandRequest;
 import com.example.command.application.port.in.OrderCommandUseCase;
+import com.example.command.application.port.in.dto.CreateOrderCommandDto;
+import com.example.command.application.port.in.dto.CreateOrderCommandDto.Request;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +23,9 @@ public class OrderCommandController {
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public ResponseEntity<String> createOrder(@RequestBody CreateOrderCommandRequest req) {
-    String res = orderCommandUseCase.createOrder(req);
-    return ResponseEntity.status(HttpStatus.CREATED).body(res);
+  public ResponseEntity<CreateOrderCommandDto.Response> createOrder(@RequestBody CreateOrderCommandRequest req) {
+    CreateOrderCommandDto.Request reqDto = new Request(req);
+    CreateOrderCommandDto.Response resDto = orderCommandUseCase.createOrder(reqDto);
+    return ResponseEntity.status(HttpStatus.CREATED).body(resDto);
   }
 }

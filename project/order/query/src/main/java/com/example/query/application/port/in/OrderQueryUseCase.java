@@ -1,7 +1,7 @@
 package com.example.query.application.port.in;
 
-import com.example.query.application.port.in.info.OrderInfo;
+import com.example.query.application.port.in.dto.FindOrderQueryDto;
 
 public interface OrderQueryUseCase {
-  OrderInfo getOrder(String id);
+  FindOrderQueryDto.Response getOrder(FindOrderQueryDto.ByIdRequest dto);
 }
