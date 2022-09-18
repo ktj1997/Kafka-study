@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.RecordMetadata;
 import org.springframework.kafka.core.KafkaProducerException;
 import org.springframework.kafka.core.KafkaSendCallback;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -18,24 +19,24 @@ import org.springframework.util.concurrent.ListenableFuture;
 @RequiredArgsConstructor
 public class OrderKafkaMessageProducer implements EventProducer {
 
-  private final ObjectMapper objectMapper;
-  private final KafkaTemplate<String, String> kafkaTemplate;
+  private final KafkaTemplate<String, BaseEvent> kafkaTemplate;
 
   @Override
   public void produce(String topic, BaseEvent event) {
     try {
-      String json = objectMapper.writeValueAsString(event);
-      ListenableFuture<SendResult<String, String>> sendResult =
-          kafkaTemplate.send(topic, json);
+      ListenableFuture<SendResult<String, BaseEvent>> sendResult =
+          kafkaTemplate.send(topic, event);
 
       sendResult.addCallback(
           new KafkaSendCallback<>() {
 
             @Override
-            public void onSuccess(SendResult<String, String> result) {
-              ProducerRecord<String, String> producerRecord = result.getProducerRecord();
+            public void onSuccess(SendResult<String, BaseEvent> result) {
+              ProducerRecord<String, BaseEvent> producerRecord = result.getProducerRecord();
+              RecordMetadata metadata = result.getRecordMetadata();
               log.info(
-                  "Send {} to Topic {} Success!", producerRecord.value(), producerRecord.topic());
+                  "{} Send {} to Topic {} Success!",metadata.timestamp(),producerRecord.value(), producerRecord.topic());
+              log.info("Partition : {}, offset: {}",metadata.offset(),metadata.offset());
             }
 
             @Override

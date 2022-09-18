@@ -13,8 +13,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class OrderEventStoreAdapter implements EventStore {
@@ -53,6 +55,7 @@ public class OrderEventStoreAdapter implements EventStore {
 
       if (!persistedEvent.getId().isEmpty()) {
         eventProducer.produce(event.getClass().getSimpleName(), event);
+        log.info(event.getClass().getSimpleName());
       }
     }
   }

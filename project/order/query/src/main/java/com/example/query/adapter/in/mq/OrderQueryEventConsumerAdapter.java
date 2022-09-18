@@ -5,8 +5,10 @@ import com.example.library.event.object.OrderCreatedEvent;
 import com.example.library.event.object.ShippingAddressChangedEvent;
 import com.example.library.event.object.ShippingStatusChangedEvent;
 import com.example.query.application.service.event.EventHandler;
+import com.example.query.domain.entity.Order;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Component;
@@ -22,6 +24,7 @@ public class OrderQueryEventConsumerAdapter implements OrderQueryEventConsumer {
   @Override
   @KafkaListener(topics = "OrderCreatedEvent", groupId = "${spring.application.name}")
   public void consume(OrderCreatedEvent event, Acknowledgment ack) {
+    log.info("Consume {}", event.getClass().getSimpleName());
     eventHandler.handle(event);
     ack.acknowledge();
   }
