@@ -1,5 +1,6 @@
 package com.example.item.domain;
 
+import com.example.core.domain.BaseEntity;
 import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -18,7 +19,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "items")
-public class Item {
+public class Item extends BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;

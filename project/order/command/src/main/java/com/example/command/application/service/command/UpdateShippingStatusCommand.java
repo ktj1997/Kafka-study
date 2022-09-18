@@ -1,6 +1,5 @@
 package com.example.command.application.service.command;
-
-import com.example.library.domain.vo.ShippingStatus;
+import com.example.library.vo.ShippingStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

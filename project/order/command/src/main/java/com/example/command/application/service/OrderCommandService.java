@@ -11,9 +11,9 @@ import com.example.command.adapter.out.rest.res.ItemDetailResponse;
 
 import com.example.core.exceptions.ApiException;
 import com.example.core.exceptions.GlobalErrorCode;
-import com.example.library.domain.vo.Buyer;
-import com.example.library.domain.vo.Item;
-import com.example.library.domain.vo.Shipping;
+import com.example.library.vo.Buyer;
+import com.example.library.vo.Item;
+import com.example.library.vo.Shipping;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;

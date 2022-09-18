@@ -19,6 +19,10 @@ spring:
     mongodb:
       host: ${MONGODB_HOST:localhost}
       port: ${MONGODB_PORT:27017}
+      database: ${MONGODB_DATABASE:order_event}
+      username: ${MONGODB_USER:root}
+      password: ${MONGODB_PASSWORD:1q2w3e4r}
+      authentication-database: admin
 server:
   port: 8081
 kafka:

@@ -1,8 +1,7 @@
 package com.example.command.application.port.in.dto;
 
 import com.example.command.adapter.in.rest.req.CreateOrderCommandRequest;
-import com.example.command.application.service.command.CreateOrderCommand;
-import com.example.library.domain.vo.Buyer;
+import com.example.library.vo.Buyer;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

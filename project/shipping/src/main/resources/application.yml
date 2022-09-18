@@ -15,8 +15,11 @@ spring:
     defer-datasource-initialization: true
     show-sql: true
     database-platform: org.hibernate.dialect.MySQL8Dialect
+  sql:
+    init:
+      mode: always
 server:
-  port: 8081
+  port: 8082
 kafka:
   broker:
     url: ${KAFKA_BOOTSTRAP_SERVER:localhost:9092}

@@ -1,6 +1,6 @@
 package com.example.library.event.object;
 
-import com.example.library.domain.vo.ShippingStatus;
+import com.example.library.vo.ShippingStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

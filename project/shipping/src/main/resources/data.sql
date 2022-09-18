@@ -1,3 +1,2 @@
-INSERT INTO items(id,name,price,stock,status) VALUES (1,'Snack',5000,100,'ACTIVE');
-INSERT INTO items(id,name,price,stock,status) VALUES (2,'IceCream',3000,100,'ACTIVE');
-INSERT INTO items(id,name,price,stock,status) VALUES (3,'Coke',1000,100,'ACTIVE');
+INSERT INTO addresses(id, user_id, post_no, street_address, address_detail, active, created_at,updated_at)
+VALUES (1, 'ktj7916', '06326', '서울특별시 강남구 테헤란로 152(역삼동)', '35F', true, now(), now());

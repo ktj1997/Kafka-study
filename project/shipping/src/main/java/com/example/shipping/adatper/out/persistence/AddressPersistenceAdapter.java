@@ -25,7 +25,7 @@ public class AddressPersistenceAdapter implements AddressDataAccessor {
 
   @Override
   public List<Address> findAllActiveAddressByUserId(String userId) {
-    return addressRepository.findAllByUserIdAndDeletedIsFalse(userId);
+    return addressRepository.findAllByUserIdAndActiveIsTrue(userId);
   }
 
   @Override

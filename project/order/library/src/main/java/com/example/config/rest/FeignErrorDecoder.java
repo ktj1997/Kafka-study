@@ -1,8 +1,8 @@
 package com.example.config.rest;
 
 import com.example.core.exceptions.ApiException;
-import com.example.core.exceptions.GlobalErrorCode;
 import com.example.core.exceptions.ErrorResponse;
+import com.example.core.exceptions.GlobalErrorCode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Response;
 import feign.codec.ErrorDecoder;

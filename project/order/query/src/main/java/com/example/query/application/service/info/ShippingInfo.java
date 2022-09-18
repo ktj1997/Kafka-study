@@ -1,6 +1,6 @@
 package com.example.query.application.service.info;
 
-import com.example.library.domain.vo.Shipping;
+import com.example.library.vo.Shipping;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

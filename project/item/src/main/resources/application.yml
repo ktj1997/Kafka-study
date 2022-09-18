@@ -15,16 +15,9 @@ spring:
     defer-datasource-initialization: true
     show-sql: true
     database-platform: org.hibernate.dialect.MySQL8Dialect
-
   sql:
     init:
       mode: always
-  data:
-    mongodb:
-      host: ${MONGODB_HOST:localhost}
-      port: ${MONGODB_PORT:27017}
-      username: ${MONGODB_USER:root}
-      password: ${MONGODB_PASSWORD:1q2w3e4r}
   redis:
     host: ${REDIS_HOST:localhost}
     port: ${REDIS_PORT:6379}

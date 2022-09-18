@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AddressRepository extends JpaRepository<Address, Long> {
-  List<Address> findAllByUserIdAndDeletedIsFalse(String userId);
+  List<Address> findAllByUserIdAndActiveIsTrue(String userId);
 }

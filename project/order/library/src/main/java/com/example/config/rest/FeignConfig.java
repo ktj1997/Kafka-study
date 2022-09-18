@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableFeignClients
 @RequiredArgsConstructor
+@EnableFeignClients(basePackages = "com.example")
 public class FeignConfig {
 
   private final ObjectMapper objectMapper;

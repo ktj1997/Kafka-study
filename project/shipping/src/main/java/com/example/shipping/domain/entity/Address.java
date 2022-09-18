@@ -34,10 +34,10 @@ public class Address extends BaseEntity {
   @Column(name = "address_detail")
   private String addressDetail;
 
-  @Column(name = "is_deleted")
-  private boolean isDeleted;
+  @Column(name = "active")
+  private boolean active;
 
   public void delete() {
-    this.isDeleted = false;
+    this.active = false;
   }
 }

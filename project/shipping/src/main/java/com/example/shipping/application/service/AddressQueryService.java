@@ -32,7 +32,8 @@ public class AddressQueryService implements AddressQueryUseCase {
   @Override
   public AddressInfo getAddress(Long id) {
     Address address = addressDataAccessor.findById(id);
-    if (address.isDeleted()) throw new EntityNotFoundException(GlobalErrorCode.ENTITY_NOT_FOUND);
+    if (!address.isActive())
+      throw new EntityNotFoundException(GlobalErrorCode.ENTITY_NOT_FOUND);
     return new AddressInfo(
         address.getPostNo(), address.getStreetAddress(), address.getAddressDetail());
   }

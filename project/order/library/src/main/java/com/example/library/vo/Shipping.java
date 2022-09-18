@@ -1,4 +1,4 @@
-package com.example.library.domain.vo;
+package com.example.library.vo;
 
 import javax.persistence.Embeddable;
 import lombok.AllArgsConstructor;

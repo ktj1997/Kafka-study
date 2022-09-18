@@ -1,12 +1,12 @@
 package com.example.query.domain.entity;
 
 import com.example.core.domain.BaseEntity;
-import com.example.library.domain.vo.Buyer;
-import com.example.library.domain.vo.CancelInfo;
-import com.example.library.domain.vo.Item;
-import com.example.library.domain.vo.OrderStatus;
-import com.example.library.domain.vo.Shipping;
-import com.example.library.domain.vo.ShippingStatus;
+import com.example.library.vo.Buyer;
+import com.example.library.vo.CancelInfo;
+import com.example.library.vo.Item;
+import com.example.library.vo.OrderStatus;
+import com.example.library.vo.Shipping;
+import com.example.library.vo.ShippingStatus;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Embedded;

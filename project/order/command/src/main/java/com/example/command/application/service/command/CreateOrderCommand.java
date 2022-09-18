@@ -1,8 +1,9 @@
 package com.example.command.application.service.command;
 
-import com.example.library.domain.vo.Buyer;
-import com.example.library.domain.vo.Item;
-import com.example.library.domain.vo.Shipping;
+
+import com.example.library.vo.Buyer;
+import com.example.library.vo.Item;
+import com.example.library.vo.Shipping;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

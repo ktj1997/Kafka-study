@@ -8,7 +8,7 @@ import com.example.command.application.service.command.UpdateShippingStatusComma
 import com.example.command.application.service.exception.AlreadyCanceledException;
 import com.example.command.application.service.exception.ErrorCode;
 import com.example.command.domain.aggregate.OrderAggregate;
-import com.example.library.domain.vo.OrderStatus;
+import com.example.library.vo.OrderStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -37,7 +37,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: 1q2w3e4r
-      MONGO_INITDB_DATABASE: example
+      MONGO_INITDB_DATABASE: order_event
     volumes:
       - "mongo_data:/data/db"
     ports:

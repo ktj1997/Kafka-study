@@ -1,9 +1,8 @@
 package com.example.query.application.service.info;
 
-import com.example.library.domain.vo.CancelInfo;
-import com.example.library.domain.vo.OrderStatus;
+import com.example.library.vo.CancelInfo;
+import com.example.library.vo.OrderStatus;
 import java.time.LocalDateTime;
-import javax.persistence.Column;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
