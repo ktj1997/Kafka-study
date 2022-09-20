@@ -1,4 +1,4 @@
-package com.example.item.application.port.in.info;
+package com.example.item.application.port.in.dto;
 
 import com.example.item.domain.ItemStatus;
 import lombok.AllArgsConstructor;

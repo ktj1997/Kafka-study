@@ -1,5 +1,8 @@
 package com.example.item.adapter.out.persistence.redis;
 
+import com.example.core.exceptions.ApiException;
+import com.example.item.application.service.exception.ErrorCode;
+import com.example.item.application.service.exception.OutOfStockException;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +28,12 @@ public class StockRedisRepository {
   }
 
   @Transactional
-  public long reduceItemStock(Long itemId, String transactionId, String userId, int quantity) {
+  public long reduceItemStock(
+      Long itemId, String transactionId, String userId, int totalQuantity, int requestQuantity) {
+    int orderedStockCount = countOrderedItem(itemId);
+    if (orderedStockCount + requestQuantity > totalQuantity) {
+      throw new OutOfStockException(ErrorCode.OUT_OF_STOCK);
+    }
     List<Long> txResult =
         redisTemplate.execute(
             new SessionCallback<>() {
@@ -33,14 +41,13 @@ public class StockRedisRepository {
                 String key = String.valueOf(itemId);
                 operations.multi();
                 SetOperations setOperations = operations.opsForSet();
-                for (int sequence = 1; sequence <= quantity; sequence++) {
+                for (int sequence = 1; sequence <= requestQuantity; sequence++) {
                   String value = ItemRedisValueGenerator.generate(transactionId, userId, sequence);
                   setOperations.add(key, value);
                 }
                 return operations.exec();
               }
             });
-    System.out.println(txResult);
     return txResult == null ? 0 : txResult.stream().filter(it -> it == 1L).count();
   }
 }

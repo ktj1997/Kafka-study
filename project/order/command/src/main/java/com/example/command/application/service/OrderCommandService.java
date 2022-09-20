@@ -1,5 +1,6 @@
 package com.example.command.application.service;
 
+import com.example.command.adapter.out.rest.req.ReduceStockRequest;
 import com.example.command.application.port.in.dto.CreateOrderCommandDto;
 import com.example.command.application.service.command.dispatcher.CommandDispatcher;
 import com.example.command.application.service.command.CreateOrderCommand;
@@ -37,14 +38,18 @@ public class OrderCommandService implements OrderCommandUseCase {
     try {
       Buyer buyer = dto.getBuyer();
       ItemDetailResponse itemDetail = itemGateway.getItemDetail(dto.getItemId());
+      int reduceStock =
+          itemGateway.reduceStock(
+              itemDetail.getItemId(), new ReduceStockRequest(buyer.getId(), id, dto.getQuantity()));
       Item item =
           Item.builder()
               .itemId(itemDetail.getItemId())
               .itemName(itemDetail.getItemName())
-              .quantity(dto.getQuantity())
+              .quantity(reduceStock)
               .build();
 
       AddressDetailResponse addressDetail = shippingGateway.getAddressDetail(dto.getShippingId());
+
       Shipping shipping =
           Shipping.builder()
               .postNo(addressDetail.getPostNo())

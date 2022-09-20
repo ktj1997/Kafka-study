@@ -2,8 +2,9 @@ package com.example.item.adapter.in.rest;
 
 import com.example.item.adapter.in.rest.req.ReduceStockRequest;
 import com.example.item.application.port.in.ItemUseCase;
-import com.example.item.application.port.in.command.ReduceStockCommand;
-import com.example.item.application.port.in.info.ItemInfo;
+import com.example.item.application.port.in.dto.ReduceStockCommandDto;
+import com.example.item.application.service.command.ReduceStockCommand;
+import com.example.item.application.port.in.dto.ItemInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,9 +33,10 @@ public class ItemController {
   @ResponseStatus(HttpStatus.OK)
   public ResponseEntity<Long> reduceStock(
       @PathVariable Long id, @RequestBody ReduceStockRequest req) {
-    ReduceStockCommand command =
-        new ReduceStockCommand(id, req.getUserId(), req.getTransactionId(), req.getQuantity());
-    long response = itemUseCase.reduceStock(command);
+    ReduceStockCommandDto.Request reqDto =
+        new ReduceStockCommandDto.Request(
+            id, req.getUserId(), req.getTransactionId(), req.getQuantity());
+    long response = itemUseCase.reduceStock(reqDto);
     return ResponseEntity.ok(response);
   }
 }

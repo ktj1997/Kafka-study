@@ -29,7 +29,9 @@ public class ItemPersistenceAdaptor implements ItemDataAccessor {
   }
 
   @Override
-  public long reduceStock(Long itemId, String transactionId, String userId, int quantity) {
-    return stockRedisRepository.reduceItemStock(itemId, transactionId, userId, quantity);
+  public long reduceStock(
+      Long itemId, String transactionId, String userId, int totalQuantity, int requestQuantity) {
+    return stockRedisRepository.reduceItemStock(
+        itemId, transactionId, userId, totalQuantity, requestQuantity);
   }
 }

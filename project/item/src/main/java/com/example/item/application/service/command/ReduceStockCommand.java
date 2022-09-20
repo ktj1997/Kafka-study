@@ -1,4 +1,4 @@
-package com.example.item.application.port.in.command;
+package com.example.item.application.service.command;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,5 +9,6 @@ public class ReduceStockCommand {
   private Long itemId;
   private String userId;
   private String transactionId;
-  private int quantity;
+  private int totalQuantity;
+  private int requestQuantity;
 }

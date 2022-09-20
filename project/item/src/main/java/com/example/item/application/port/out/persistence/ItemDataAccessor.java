@@ -7,5 +7,6 @@ public interface ItemDataAccessor {
 
   int countOrderedItem(Long id);
 
-  long reduceStock(Long itemId, String transactionId, String userId, int quantity);
+  long reduceStock(
+      Long itemId, String transactionId, String userId, int totalQuantity, int requestQuantity);
 }

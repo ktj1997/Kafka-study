@@ -1,10 +1,11 @@
 package com.example.item.application.port.in;
 
-import com.example.item.application.port.in.command.ReduceStockCommand;
-import com.example.item.application.port.in.info.ItemInfo;
+import com.example.item.application.port.in.dto.ReduceStockCommandDto;
+import com.example.item.application.service.command.ReduceStockCommand;
+import com.example.item.application.port.in.dto.ItemInfo;
 
 public interface ItemUseCase {
   ItemInfo getItemDetail(Long id);
 
-  long reduceStock(ReduceStockCommand command);
+  long reduceStock(ReduceStockCommandDto.Request reqDto);
 }
